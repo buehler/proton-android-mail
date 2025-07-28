@@ -123,7 +123,7 @@
   <!-- Errors -->
   <string name="upselling_unable_retrieve_options">Nepodařilo se načíst možnosti navýšení.</string>
   <string name="upselling_snackbar_error_no_user_id">Došlo k chybě.</string>
-  <string name="upselling_snackbar_error_no_subscriptions">Nepodařilo se načíst předplatné.</string>
+  <string name="upselling_snackbar_error_no_subscriptions">Nepodařilo se stáhnout předplatné.</string>
   <!-- Snackbar texts -->
   <string name="upselling_snackbar_upgrade_in_progress">Probíhá navýšení předplatného…</string>
   <string name="upselling_snackbar_upgrade_error_generic">Při navýšení vašeho předplatného došlo k chybě.</string>

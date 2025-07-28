@@ -31,7 +31,7 @@
   <string name="change_sender_button_content_description">Alterar o remetente</string>
   <string name="composer_change_sender_paid_feature">É necessária uma subscrição paga do Proton Mail para alterar o endereço do remetente.</string>
   <string name="composer_error_change_sender_failed_getting_subscription">Não é possível alterar o remetente porque a subscrição do utilizador não pôde ser obtida. Tente novamente.</string>
-  <string name="composer_error_store_draft_sender_address">Erro ao guardar o endereço do remetente</string>
+  <string name="composer_error_store_draft_sender_address">O endereço do remetente não foi guardado</string>
   <string name="composer_error_store_draft_body">O corpo do rascunho do e-mail não foi guardado.</string>
   <string name="composer_error_duplicate_recipient">Um ou mais destinatários duplicados foram removidos.</string>
   <string name="composer_error_store_draft_subject">Erro ao guardar a linha de assunto</string>
@@ -41,15 +41,15 @@
   <string name="composer_add_attachments_bottom_sheet_import_from">Importar de…</string>
   <string name="composer_error_loading_parent_message">Não foi possível carregar as informações da mensagem.</string>
   <string name="composer_original_message_quote">Mensagem original</string>
-  <string name="composer_sender_quote">Em %s, %s &lt; %s&gt; escreveu:</string>
+  <string name="composer_sender_quote">A %s, %s &lt; %s&gt; escreveu:</string>
   <string name="composer_attachment_size_exceeded_dialog_confirm_button">OK</string>
   <string name="composer_attachment_size_exceeded_dialog_title">O limite de anexos foi atingido.</string>
   <string name="composer_attachment_size_exceeded_dialog_message">O limite de tamanho para anexos é de %1$s.</string>
-  <string name="composer_attachment_reencryption_failed_message">Erro na reencriptação do anexo. Por questões de segurança, todos os anexos foram removidos.</string>
+  <string name="composer_attachment_reencryption_failed_message">A reencriptação do anexo falhou. Por motivos de segurança, todos os anexos foram removidos.</string>
   <string name="composer_attachment_not_found">O anexo não foi encontrado.</string>
   <string name="composer_attachment_error_draft_loading">Não foi possível carregar a mensagem original do rascunho.</string>
   <string name="composer_attachment_error_saving_attachment">Não foi possível armazenar o anexo. Tente novamente.</string>
-  <string name="composer_warning_local_data_shown">A versão mais recente deste rascunho não conseguiu carregar. Qualquer alteração substituirá o seu conteúdo.</string>
+  <string name="composer_warning_local_data_shown">A versão mais recente deste rascunho falhou ao carregar. Qualquer alteração irá substituir o seu conteúdo.</string>
   <string name="composer_button_add_password">Adicionar uma palavra-passe</string>
   <string name="composer_button_set_expiration">Definir tempo de expiração</string>
   <string name="composer_expiration_time_bottom_sheet_title">Expiração da mensagem</string>

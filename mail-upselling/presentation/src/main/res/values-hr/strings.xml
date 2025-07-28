@@ -82,12 +82,12 @@
   <string name="upselling_onboarding_unlimited_feature_drive">Encrypted cloud storage for photos and documents</string>
   <string name="upselling_onboarding_unlimited_feature_sentinel">Advanced account protection</string>
   <!-- NPS feedback-->
-  <string name="nps_feedback_title">Feedback</string>
+  <string name="nps_feedback_title">Povratne informacije</string>
   <string name="nps_feedback_headline">How likely are you to recommend Proton Mail to a friend or colleague?</string>
   <string name="nps_cta">Share anonymously</string>
   <string name="nps_label_left">0 is very unlikely</string>
   <string name="nps_label_right">10 is very likely</string>
-  <string name="nps_optional">Optional</string>
+  <string name="nps_optional">Neobavezno</string>
   <string name="nps_why_description">Please let us know why you gave that rating</string>
   <string name="nps_success">Thanks for your feedback! It helps us make Proton Mail even better ❤️</string>
   <!-- Comparison Table -->
@@ -115,22 +115,22 @@
   <string name="upselling_get_button">Nabavite %s</string>
   <string name="upselling_get_button_promotional">Get 1 month for %s %s</string>
   <plurals name="upselling_month">
-    <item quantity="one">%d month</item>
-    <item quantity="few">%d months</item>
-    <item quantity="other">%d months</item>
+    <item quantity="one">%d mjesec</item>
+    <item quantity="few">%d mjeseca</item>
+    <item quantity="other">%d mjeseci</item>
   </plurals>
   <!-- Errors -->
   <string name="upselling_unable_retrieve_options">Unable to retrieve upgrade options.</string>
   <string name="upselling_snackbar_error_no_user_id">Došlo je do pogreške.</string>
-  <string name="upselling_snackbar_error_no_subscriptions">Unable to fetch subscriptions.</string>
+  <string name="upselling_snackbar_error_no_subscriptions">Nije moguće dohvatiti pretplate.</string>
   <!-- Snackbar texts -->
   <string name="upselling_snackbar_upgrade_in_progress">Subscription upgrade in progress…</string>
-  <string name="upselling_snackbar_upgrade_error_generic">An error occurred while upgrading your subscription.</string>
-  <string name="upselling_snackbar_upgrade_error_recoverable">An error occurred. Please try again.</string>
+  <string name="upselling_snackbar_upgrade_error_generic">Došlo je do pogreške prilikom nadogradnje vaše pretplate.</string>
+  <string name="upselling_snackbar_upgrade_error_recoverable">Dogodila se greška. Pokušajte ponovno.</string>
   <!-- Upselling: Onboarding -->
   <string name="upselling_onboarding_title">Choose a plan</string>
   <string name="upselling_onboarding_switcher_monthly">Mjesečno</string>
-  <string name="upselling_onboarding_switcher_annual">Annual</string>
+  <string name="upselling_onboarding_switcher_annual">Godišnje</string>
   <string name="upselling_onboarding_best_value">Best value</string>
   <string name="upselling_onboarding_month">/mjesec</string>
   <string name="upselling_onboarding_year">/godina</string>
@@ -165,6 +165,6 @@
   <string name="post_subscription_proton_vpn_message">The best VPN for speed and security.</string>
   <string name="post_subscription_proton_pass">Proton Pass</string>
   <string name="post_subscription_proton_pass_message">Secure password storage and easy sign-in to your accounts.</string>
-  <string name="post_subscription_button_installed">Installed</string>
-  <string name="post_subscription_button_get_the_app">Get the app</string>
+  <string name="post_subscription_button_installed">Instalirano</string>
+  <string name="post_subscription_button_get_the_app">Preuzmite aplikaciju</string>
 </resources>

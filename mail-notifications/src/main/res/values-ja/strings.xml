@@ -29,5 +29,5 @@
   <string name="notification_permission_dialog_post_send_title">更新を続けますか？</string>
   <string name="notification_permission_dialog_post_send_message">通知をオンにして、メールにいつ返信がきたかを確認します。</string>
   <string name="notification_permission_dialog_button_enable">プッシュ通知を有効にする</string>
-  <string name="notification_permission_dialog_button_dismiss">中止</string>
+  <string name="notification_permission_dialog_button_dismiss">却下</string>
 </resources>

@@ -42,17 +42,17 @@
   <string name="upselling_auto_delete_plus_description_override">使用 Mail Plus，享受更整潔的信箱，並從其他進階功能中獲益。</string>
   <string name="upselling_auto_delete_plus_title">清除舊垃圾桶與垃圾郵件</string>
   <!-- Drive Spotlight-->
-  <string name="drive_spotlight_title">New! Albums in Proton</string>
-  <string name="drive_spotlight_description">Organize photos in albums and securely share them with friends and family. Included free with your plan.</string>
-  <string name="drive_spotlight_description_with_gb">Organize photos in albums and securely share them with friends and family. You still have %d GB of secure cloud storage available.</string>
-  <string name="drive_spotlight_cta">Open Albums in Proton Drive</string>
+  <string name="drive_spotlight_title">新功能！Proton 中的相簿</string>
+  <string name="drive_spotlight_description">將照片整理到相簿中，並安全地與親友共享。您的方案隨附免費。</string>
+  <string name="drive_spotlight_description_with_gb">將照片整理到相簿中，並安全地與親友共享。您仍有 %d GB 的安全雲端儲存空間可供使用。</string>
+  <string name="drive_spotlight_cta">開啟 Proton Drive 中的相簿</string>
   <!-- Mail Plus -->
   <string name="upselling_plus_feature_storage">15 GB 儲存空間</string>
-  <string name="upselling_plus_feature_storage_plus_mails">15 GB storage, 10 email addresses</string>
+  <string name="upselling_plus_feature_storage_plus_mails">15 GB 儲存空間，10 個電郵位址</string>
   <string name="upselling_plus_feature_email_addresses">10 個電子信箱</string>
   <string name="upselling_plus_feature_custom_domain">支援自訂電子郵件網域</string>
   <string name="upselling_plus_feature_desktop_app">新的 Proton Mail 桌面應用程式</string>
-  <string name="upselling_plus_feature_calendar">Premium calendar features</string>
+  <string name="upselling_plus_feature_calendar">頂級質子版行事曆功能</string>
   <string name="upselling_plus_feature_folders_labels">資料夾、標籤與篩選器無上限</string>
   <string name="upselling_plus_feature_plus_7_features">與 7 項進階功能</string>
   <!-- Unlimited -->
@@ -82,14 +82,14 @@
   <string name="upselling_onboarding_unlimited_feature_drive">加密雲端儲存給予照片和文件</string>
   <string name="upselling_onboarding_unlimited_feature_sentinel">進階的帳號保護</string>
   <!-- NPS feedback-->
-  <string name="nps_feedback_title">Feedback</string>
-  <string name="nps_feedback_headline">How likely are you to recommend Proton Mail to a friend or colleague?</string>
-  <string name="nps_cta">Share anonymously</string>
-  <string name="nps_label_left">0 is very unlikely</string>
-  <string name="nps_label_right">10 is very likely</string>
-  <string name="nps_optional">Optional</string>
-  <string name="nps_why_description">Please let us know why you gave that rating</string>
-  <string name="nps_success">Thanks for your feedback! It helps us make Proton Mail even better ❤️</string>
+  <string name="nps_feedback_title">意見反饋</string>
+  <string name="nps_feedback_headline">您有多大可能向朋友或同事推薦 Proton Mail？</string>
+  <string name="nps_cta">匿名共享</string>
+  <string name="nps_label_left">0 代表非常不可能</string>
+  <string name="nps_label_right">10 非常有可能</string>
+  <string name="nps_optional">自由列席</string>
+  <string name="nps_why_description">請告訴我們您給出此評分的原因</string>
+  <string name="nps_success">感謝您的意見反饋！這有助於我們讓 Proton Mail 更臻完善 ❤️</string>
   <!-- Comparison Table -->
   <string name="upselling_comparison_table_storage">儲存空間</string>
   <string name="upselling_comparison_table_email_addresses">電郵位址</string>

@@ -57,7 +57,7 @@
   <string name="action_label_content_description">Označit jako…</string>
   <string name="action_move_content_description">Přesunout do…</string>
   <string name="action_trash_content_description">Koš</string>
-  <string name="action_delete_content_description">Odstranit</string>
+  <string name="action_delete_content_description">Smazat</string>
   <string name="action_archive_content_description">Archivovat</string>
   <string name="action_spam_content_description">Spam</string>
   <string name="action_view_in_light_mode_content_description">Zobrazit zprávu ve světlém režimu</string>

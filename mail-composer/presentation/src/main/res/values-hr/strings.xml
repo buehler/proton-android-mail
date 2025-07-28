@@ -50,7 +50,7 @@
   <string name="composer_attachment_error_draft_loading">Unable to load the original draft message.</string>
   <string name="composer_attachment_error_saving_attachment">Unable to store the attachment. Please try again.</string>
   <string name="composer_warning_local_data_shown">The latest version of this draft failed to load. Any change will override its content.</string>
-  <string name="composer_button_add_password">Add password</string>
+  <string name="composer_button_add_password">Dodaj lozinku</string>
   <string name="composer_button_set_expiration">Postavi datum isteka</string>
   <string name="composer_expiration_time_bottom_sheet_title">Istek poruke</string>
   <string name="composer_expiration_time_bottom_sheet_done">Postavi</string>
@@ -82,7 +82,7 @@
   <string name="message_sending_error_dialog_button_dismiss">Zatvori</string>
   <string name="message_sending_error_dialog_text_error">Your email cannot be sent to the address entered due to the following reason:</string>
   <string name="message_sending_error_dialog_text_reason_no_trusted_keys">There are no Trusted Keys: %s</string>
-  <string name="message_sending_error_dialog_text_reason_address_disabled">Address does not exist: %s</string>
+  <string name="message_sending_error_dialog_text_reason_address_disabled">Adresa ne postoji: %s</string>
   <string name="set_message_password_title">Encrypt message</string>
   <string name="set_message_password_info_message">Postavite lozinku za šifriranje ove poruke za one koji nisu korisnici ProtonMaila.</string>
   <string name="set_message_password_info_link"><a href="https://proton.me/support/password-protected-emails">Learn more</a></string>
@@ -100,8 +100,8 @@
   <string name="set_message_password_button_remove_password">Ukloni lozinku</string>
   <string name="respondInline">Odgovori u ravnini s ostalim tekstom</string>
   <plurals name="composer_recipient_suggestion_contacts">
-    <item quantity="one">%d member</item>
-    <item quantity="few">%d members</item>
-    <item quantity="other">%d members</item>
+    <item quantity="one">%d član</item>
+    <item quantity="few">%d člana</item>
+    <item quantity="other">%d članova</item>
   </plurals>
 </resources>

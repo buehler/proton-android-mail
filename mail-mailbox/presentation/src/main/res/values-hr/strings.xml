@@ -30,9 +30,9 @@
     <item quantity="other">%d Selected</item>
   </plurals>
   <plurals name="filter_unread_button_text">
-    <item quantity="one">%s unread</item>
-    <item quantity="few">%s unread</item>
-    <item quantity="other">%s unread</item>
+    <item quantity="one">%s nepročitana</item>
+    <item quantity="few">%s nepročitane</item>
+    <item quantity="other">%s nepročitanih</item>
   </plurals>
   <string name="mailbox_default_recipient">(Nema primatelja)</string>
   <string name="mailbox_default_sender">(Nema pošiljatelja)</string>
@@ -47,29 +47,29 @@
   <string name="mailbox_is_empty_spam_description">Vaša mapa neželjene pošte je prazna</string>
   <string name="mailbox_is_empty_trash_description">Otpad je prazan.</string>
   <plurals name="mailbox_action_trash_conversation">
-    <item quantity="one">Conversation moved to Trash</item>
-    <item quantity="few">%d conversations moved to Trash</item>
-    <item quantity="other">%d conversations moved to Trash</item>
+    <item quantity="one">Razgovor premješten u otpad</item>
+    <item quantity="few">%d razgovora premještena u otpad</item>
+    <item quantity="other">%d razgovora premještena u otpad</item>
   </plurals>
   <plurals name="mailbox_action_trash_message">
-    <item quantity="one">Message moved to Trash</item>
-    <item quantity="few">%d messages moved to Trash</item>
-    <item quantity="other">%d messages moved to Trash</item>
+    <item quantity="one">Poruka premještena u otpad</item>
+    <item quantity="few">%d poruke premještene u otpad</item>
+    <item quantity="other">%d poruka premješteno u otpad</item>
   </plurals>
   <plurals name="mailbox_action_delete_conversation_dialog_title">
-    <item quantity="one">Delete conversation</item>
-    <item quantity="few">Delete %d conversations</item>
-    <item quantity="other">Delete %d conversations</item>
+    <item quantity="one">Izbriši razgovor</item>
+    <item quantity="few">Izbriši %d razgovora</item>
+    <item quantity="other">Izbriši %d razgovora</item>
   </plurals>
   <plurals name="mailbox_action_delete_message_dialog_title">
-    <item quantity="one">Delete message</item>
-    <item quantity="few">Delete %d messages</item>
-    <item quantity="other">Delete %d messages</item>
+    <item quantity="one">Izbriši poruku</item>
+    <item quantity="few">Izbriši %d poruke</item>
+    <item quantity="other">Izbriši %d poruka</item>
   </plurals>
   <plurals name="mailbox_action_delete_conversation_dialog_message">
-    <item quantity="one">Are you sure you want to permanently delete this conversation?</item>
-    <item quantity="few">Are you sure you want to permanently delete these conversations?</item>
-    <item quantity="other">Are you sure you want to permanently delete these conversations?</item>
+    <item quantity="one">Jeste li sigurni da želite trajno izbrisati ovaj razgovor?</item>
+    <item quantity="few">Jeste li sigurni da želite trajno izbrisati ove razgovore?</item>
+    <item quantity="other">Jeste li sigurni da želite trajno izbrisati ove razgovore?</item>
   </plurals>
   <plurals name="mailbox_action_delete_message_dialog_message">
     <item quantity="one">Are you sure you want to permanently delete this message?</item>
@@ -77,14 +77,14 @@
     <item quantity="other">Are you sure you want to permanently delete these messages?</item>
   </plurals>
   <plurals name="mailbox_action_delete_message">
-    <item quantity="one">Message permanently deleted</item>
-    <item quantity="few">%d messages permanently deleted</item>
-    <item quantity="other">%d messages permanently deleted</item>
+    <item quantity="one">Poruka je trajno izbrisana</item>
+    <item quantity="few">%d poruke trajno su izbrisane</item>
+    <item quantity="other">%d poruka trajno je izbrisano</item>
   </plurals>
   <plurals name="mailbox_action_delete_conversation">
-    <item quantity="one">Conversation permanently deleted</item>
-    <item quantity="few">%d conversations permanently deleted</item>
-    <item quantity="other">%d conversations permanently deleted</item>
+    <item quantity="one">Razgovor je trajno izbrisan</item>
+    <item quantity="few">%d razgovora trajno su izbrisana</item>
+    <item quantity="other">%d razgovora trajno je izbrisano</item>
   </plurals>
   <string name="mailbox_include_all_desc">Can\'t find what you\'re looking for?</string>
   <string name="mailbox_include_all_button">Include Spam/Trash</string>

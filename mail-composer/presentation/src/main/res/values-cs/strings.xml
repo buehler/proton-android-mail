@@ -97,7 +97,7 @@
   <string name="set_message_password_button_hide">Skrýt heslo</string>
   <string name="set_message_password_button_apply">Použít heslo</string>
   <string name="set_message_password_button_save_changes">Uložit změny</string>
-  <string name="set_message_password_button_remove_password">Odstranit heslo</string>
+  <string name="set_message_password_button_remove_password">Odebrat heslo</string>
   <string name="respondInline">Odpovědět v řádku</string>
   <plurals name="composer_recipient_suggestion_contacts">
     <item quantity="one">%d člen</item>

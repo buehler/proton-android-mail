@@ -22,9 +22,9 @@
   <string name="detail_error_loading_messages">Neuspješno učitavanje poruka</string>
   <string name="error_mark_unread_failed">Mark unread failed. Please try again.</string>
   <plurals name="message_count_label_text">
-    <item quantity="one">%d message</item>
-    <item quantity="few">%d messages</item>
-    <item quantity="other">%d messages</item>
+    <item quantity="one">%d poruka</item>
+    <item quantity="few">%d poruke</item>
+    <item quantity="other">%d poruka</item>
   </plurals>
   <string name="quick_reply_button_content_description">Odgovori</string>
   <string name="quick_reply_all_button_content_description">Odgovori svima</string>
@@ -36,9 +36,9 @@
   <string name="bcc">Skrivena kopija:</string>
   <string name="date">Datum:</string>
   <plurals name="attachment">
-    <item quantity="one">%d Attachment</item>
-    <item quantity="few">%d Attachments</item>
-    <item quantity="other">%d Attachments</item>
+    <item quantity="one">%d privitak</item>
+    <item quantity="few">%d privitka</item>
+    <item quantity="other">%d privitaka</item>
   </plurals>
   <string name="hide_details">Sakrij detalje</string>
   <string name="undisclosed_recipients">Nedefinirani primatelji</string>
@@ -60,7 +60,7 @@
   <string name="error_move_conversation_failed">Moving conversation failed. Please retry.</string>
   <string name="error_loading_message">Nešto je pošlo po zlu. Pokušajte ponovno.</string>
   <string name="error_offline_loading_message">You are offline. An internet connection is required to display the content of this message.</string>
-  <string name="error_get_attachment_failed">Failed to get attachment.</string>
+  <string name="error_get_attachment_failed">Dohvaćanje privitka nije uspjelo.</string>
   <string name="error_attachment_download_in_progress">Current download must complete before starting a new one.</string>
   <string name="error_get_attachment_not_enough_memory">Failed to get attachment due to insufficient memory</string>
   <string name="reload">Ponovno učitaj</string>
@@ -116,7 +116,7 @@
   <string name="non_trashed_messages_banner">Ovaj razgovor sadrži poruke koje nisu u otpadu.</string>
   <string name="show">Prikaži</string>
   <string name="hide">Sakrij</string>
-  <string name="tooltip_customize_toolbar_title">Customize toolbar</string>
+  <string name="tooltip_customize_toolbar_title">Prilagodi alatnu traku</string>
   <string name="tooltip_customize_toolbar_message">You can now choose and rearrange the actions in this toolbar.</string>
   <string name="tooltip_customize_toolbar_cta">Prilagodi</string>
 </resources>

@@ -19,7 +19,7 @@
 <resources>
   <!--  Onboarding 1  -->
   <string name="onboarding_privacy_for_all_headline">Privatnost za sve</string>
-  <string name="onboarding_privacy_for_all_description">Invite others to Proton Mail so you can all benefit from end-to-end encryption.</string>
+  <string name="onboarding_privacy_for_all_description">Pozovite druge u Proton Mail kako biste svi imali koristi od end-to-end šifriranja.</string>
   <!--  Onboarding 2  -->
   <string name="onboarding_easily_up_to_date_headline">Lako ažurirano</string>
   <string name="onboarding_easily_up_to_date_description">Breeze through threaded messages in conversation mode.</string>

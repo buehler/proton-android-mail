@@ -21,10 +21,10 @@
   <string name="contact_list_loading_error">Erro ao carregar os contactos. Tente outra vez mais tarde.</string>
   <string name="no_contacts">Não foram encontrados contactos.</string>
   <string name="no_contact_groups">Nenhum grupo de contactos foi encontrado.</string>
-  <string name="no_contacts_description">Melhore a sua experiência de email criando um novo contacto ou importando os existentes.</string>
+  <string name="no_contacts_description">Melhore a sua experiência de email criando um contacto ou importando os existentes.</string>
   <string name="no_contact_groups_description">Melhore a sua experiência de email criando um grupo de contactos.</string>
   <string name="add_contact">Adicionar contacto</string>
-  <string name="add_contact_group">Adicionar un grupo de contactos</string>
+  <string name="add_contact_group">Adicionar grupo de contactos</string>
   <string name="add_contact_content_description">Adicionar contacto</string>
   <string name="all_title">Todos</string>
   <string name="groups_title">Grupos</string>
