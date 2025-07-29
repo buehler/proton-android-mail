@@ -49,7 +49,7 @@ class NPSFeedbackWorker @AssistedInject constructor(
             .deserialize<WorkerInput>()
 
         val body = NPSFeedbackBody(
-            ratingValue = input.ratingValue ?: NPSFeedbackBody.NO_RATING,
+            ratingValue = input.ratingValue,
             comment = input.comment,
             installedApps = input.installedProtonApps.map {
                 "${it.packagaName}:${it.versionName}"

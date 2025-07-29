@@ -25,15 +25,11 @@ import kotlinx.serialization.Serializable
 data class NPSFeedbackBody(
 
     @SerialName("Score")
-    val ratingValue: Int, // [-1, 10]
+    val ratingValue: Int?, // [0, 10]
 
     @SerialName("Comment")
     val comment: String?,
 
     @SerialName("InstalledApps")
     val installedApps: List<String>
-) {
-    companion object {
-        const val NO_RATING = -1
-    }
-}
+)
