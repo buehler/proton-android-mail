@@ -106,7 +106,6 @@ fun ContactListScreen(listActions: ContactListScreen.Actions, viewModel: Contact
             topBar = {
                 ContactListTopBar(
                     actions = ContactListTopBar.Actions(
-                        onBackClick = actions.onBackClick,
                         onAddClick = {
                             viewModel.submit(ContactListViewAction.OnOpenBottomSheet)
                         },
@@ -202,7 +201,6 @@ fun ContactListScreen(listActions: ContactListScreen.Actions, viewModel: Contact
 object ContactListScreen {
 
     data class Actions(
-        val onBackClick: () -> Unit,
         val onContactSelected: (ContactId) -> Unit,
         val onContactGroupSelected: (LabelId) -> Unit,
         val onNavigateToNewContactForm: () -> Unit,
@@ -217,7 +215,6 @@ object ContactListScreen {
         companion object {
 
             val Empty = Actions(
-                onBackClick = {},
                 onContactSelected = {},
                 onContactGroupSelected = {},
                 onNavigateToNewContactForm = {},

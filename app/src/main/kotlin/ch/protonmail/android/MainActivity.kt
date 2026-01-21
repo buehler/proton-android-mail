@@ -18,11 +18,13 @@
 
 package ch.protonmail.android
 
+import android.Manifest
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -75,6 +77,10 @@ class MainActivity : AppCompatActivity() {
 
         // Register activities for result.
         launcherViewModel.register(this)
+
+        val read = checkSelfPermission(Manifest.permission.READ_CONTACTS)
+        val write = checkSelfPermission(Manifest.permission.WRITE_CONTACTS)
+        Log.i("ContactSync", "read: $read write: $write")
 
         lifecycleScope.launch {
             observePostSubscription.start(this@MainActivity)

@@ -18,7 +18,12 @@
 
 package ch.protonmail.android.navigation
 
+import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
@@ -51,7 +56,10 @@ import ch.protonmail.android.mailnotifications.presentation.model.NotificationPe
 import ch.protonmail.android.navigation.model.Destination
 import ch.protonmail.android.navigation.model.HomeState
 import ch.protonmail.android.navigation.share.ShareIntentObserver
+import ch.protonmail.android.sync.ensureContactSyncAccount
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -84,7 +92,7 @@ class HomeViewModel @Inject constructor(
     @IsComposerV2Enabled val isComposerV2Enabled: Boolean,
     private val getDraftLabelId: GetDraftLabelId,
     observePrimaryUser: ObservePrimaryUser,
-    shareIntentObserver: ShareIntentObserver
+    shareIntentObserver: ShareIntentObserver,
 ) : ViewModel() {
 
     private val primaryUser = observePrimaryUser().filterNotNull()
@@ -110,6 +118,14 @@ class HomeViewModel @Inject constructor(
             resetSendingMessageStatus(primaryUser.first().userId)
         }.launchIn(viewModelScope)
 
+        primaryUser.onEach { user ->
+            mutableState.update { currentState ->
+                currentState.copy(
+                    user = user
+                )
+            }
+        }.launchIn(viewModelScope)
+
         shareIntentObserver()
             .onEach { intent ->
                 emitNewStateForIntent(intent)
@@ -117,6 +133,18 @@ class HomeViewModel @Inject constructor(
             .launchIn(viewModelScope)
 
         showNotificationPermissionDialogIfNeeded(isMessageSent = false)
+
+
+//        context.registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {result ->
+//            val ok = (result[Manifest.permission.WRITE_CONTACTS] == true) &&
+//                (result[Manifest.permission.READ_CONTACTS] == true)
+//            if (ok) {
+//                // now enable sync + request immediate sync
+//                Log.i("ContactSync", "read / write contacts enabled")
+//            } else {
+//                Log.w("ContactSync", "Permissions not given")
+//            }
+//        }
     }
 
     fun navigateTo(navController: NavController, route: String) {

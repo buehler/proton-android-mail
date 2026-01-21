@@ -18,6 +18,9 @@
 
 package ch.protonmail.android.navigation
 
+import android.Manifest
+import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModel
@@ -61,7 +64,7 @@ class LauncherViewModel @Inject constructor(
     private val notificationPermissionOrchestrator: NotificationPermissionOrchestrator,
     private val plansOrchestrator: PlansOrchestrator,
     private val reportOrchestrator: ReportOrchestrator,
-    private val userSettingsOrchestrator: UserSettingsOrchestrator
+    private val userSettingsOrchestrator: UserSettingsOrchestrator,
 ) : ViewModel() {
 
     val state: StateFlow<LauncherState> = accountManager.getAccounts().map { accounts ->

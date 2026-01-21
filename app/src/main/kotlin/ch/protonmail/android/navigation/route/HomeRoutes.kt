@@ -439,9 +439,6 @@ internal fun NavGraphBuilder.addContacts(
                 onContactGroupSelected = { labelId ->
                     navController.navigate(Destination.Screen.ContactGroupDetails(labelId))
                 },
-                onBackClick = {
-                    navController.navigateBack()
-                },
                 onSubscriptionUpgradeRequired = {
                     showNormalSnackbar(it)
                 },

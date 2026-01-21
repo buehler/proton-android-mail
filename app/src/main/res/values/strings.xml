@@ -17,7 +17,7 @@
   ~ along with Proton Mail. If not, see <https://www.gnu.org/licenses/>.
   -->
 <resources>
-    <string name="app_name" translatable="false">Proton Mail</string>
+    <string name="app_name" translatable="false">Proton Contacts Sync</string>
     <string name="dialog_sign_out_account_title">Sign out</string>
     <string name="dialog_sign_out_account_description">Are you sure you want to sign out?</string>
     <string name="dialog_sign_out_account_confirm">Yes</string>

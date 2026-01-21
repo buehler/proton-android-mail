@@ -19,6 +19,7 @@
 package ch.protonmail.android
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.ProcessLifecycleOwner
 import ch.protonmail.android.callbacks.AutoLockLifecycleCallbacks
 import ch.protonmail.android.callbacks.SecureActivityLifecycleCallbacks
@@ -47,8 +48,16 @@ internal class App : Application() {
     @LogsExportFeatureSettingValue
     lateinit var logsExportFeatureSetting: Provider<LogsExportFeatureSetting>
 
+    private fun isMainProcess(app: Application): Boolean {
+        return Application.getProcessName() == app.packageName;
+    }
+
     override fun onCreate() {
         super.onCreate()
+        Log.i("Proc", "process=" + Application.getProcessName())
+//        if(!isMainProcess(this)){
+//            return
+//        }
 
         benchmarkTracer.begin("proton-app-init")
 

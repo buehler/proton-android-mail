@@ -27,6 +27,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ch.protonmail.android.MainActivity
 import ch.protonmail.android.navigation.model.OnboardingEligibilityState
 import ch.protonmail.android.navigation.onboarding.Onboarding
+import ch.protonmail.android.navigation.onboarding.OnboardingStepAction
+import ch.protonmail.android.navigation.onboarding.OnboardingStepViewModel
 import me.proton.core.compose.component.ProtonCenteredProgress
 
 @Composable
@@ -35,12 +37,15 @@ internal fun LauncherRouter(
     launcherActions: Launcher.Actions,
     viewModel: LauncherRouterViewModel = hiltViewModel()
 ) {
-
     val onboardingState by viewModel.onboardingEligibilityState.collectAsStateWithLifecycle()
 
+    if (onboardingState == OnboardingEligibilityState.Required) {
+        val onboardingStepViewModel = hiltViewModel<OnboardingStepViewModel>()
+        onboardingStepViewModel.submit(OnboardingStepAction.MarkOnboardingComplete)
+    }
+
     when (onboardingState) {
-        OnboardingEligibilityState.Loading -> ProtonCenteredProgress(Modifier.fillMaxSize())
         OnboardingEligibilityState.NotRequired -> Home(activityActions, launcherActions)
-        OnboardingEligibilityState.Required -> Onboarding()
+        else -> ProtonCenteredProgress(Modifier.fillMaxSize())
     }
 }

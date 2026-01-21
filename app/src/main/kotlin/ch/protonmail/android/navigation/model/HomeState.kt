@@ -22,13 +22,15 @@ import ch.protonmail.android.mailcommon.presentation.Effect
 import ch.protonmail.android.mailcomposer.domain.model.MessageSendingStatus
 import ch.protonmail.android.mailnotifications.presentation.model.NotificationPermissionDialogState
 import me.proton.core.network.domain.NetworkStatus
+import me.proton.core.user.domain.entity.User
 
 data class HomeState(
     val notificationPermissionDialogState: NotificationPermissionDialogState,
     val networkStatusEffect: Effect<NetworkStatus>,
     val messageSendingStatusEffect: Effect<MessageSendingStatus>,
     val navigateToEffect: Effect<String>,
-    val startedFromLauncher: Boolean
+    val startedFromLauncher: Boolean,
+    val user: User?
 ) {
 
     companion object {
@@ -38,7 +40,8 @@ data class HomeState(
             networkStatusEffect = Effect.empty(),
             messageSendingStatusEffect = Effect.empty(),
             navigateToEffect = Effect.empty(),
-            startedFromLauncher = false
+            startedFromLauncher = false,
+            user = null
         )
     }
 }

@@ -47,15 +47,15 @@ internal fun ContactListTopBar(
         title = {
             Text(text = stringResource(id = R.string.contact_list_title))
         },
-        navigationIcon = {
-            IconButton(onClick = actions.onBackClick) {
-                Icon(
-                    tint = ProtonTheme.colors.iconNorm,
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = stringResource(id = R.string.presentation_back)
-                )
-            }
-        },
+//        navigationIcon = {
+//            IconButton(onClick = actions.onBackClick) {
+//                Icon(
+//                    tint = ProtonTheme.colors.iconNorm,
+//                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+//                    contentDescription = stringResource(id = R.string.presentation_back)
+//                )
+//            }
+//        },
         actions = {
             IconButton(onClick = actions.onSearchClick) {
                 Icon(
@@ -83,7 +83,6 @@ internal fun ContactListTopBar(
 internal object ContactListTopBar {
 
     data class Actions(
-        val onBackClick: () -> Unit,
         val onAddClick: () -> Unit,
         val onSearchClick: () -> Unit
     ) {
@@ -91,7 +90,6 @@ internal object ContactListTopBar {
         companion object {
 
             val Empty = Actions(
-                onBackClick = {},
                 onAddClick = {},
                 onSearchClick = {}
             )

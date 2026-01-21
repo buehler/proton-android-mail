@@ -18,6 +18,8 @@
 
 package ch.protonmail.android.navigation
 
+import android.Manifest
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -43,73 +45,32 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import ch.protonmail.android.LockScreenActivity
 import ch.protonmail.android.MainActivity
 import ch.protonmail.android.R
 import ch.protonmail.android.mailcommon.presentation.ConsumableLaunchedEffect
 import ch.protonmail.android.mailcommon.presentation.Effect
 import ch.protonmail.android.mailcommon.presentation.compose.UndoableOperationSnackbar
-import ch.protonmail.android.mailcommon.presentation.extension.navigateBack
 import ch.protonmail.android.mailcommon.presentation.model.ActionResult
 import ch.protonmail.android.mailcommon.presentation.ui.CommonTestTags
 import ch.protonmail.android.mailcomposer.domain.model.MessageSendingStatus
-import ch.protonmail.android.maildetail.presentation.ui.ConversationDetail
-import ch.protonmail.android.maildetail.presentation.ui.MessageDetail
-import ch.protonmail.android.mailmessage.domain.model.DraftAction
 import ch.protonmail.android.mailmessage.domain.model.MessageId
 import ch.protonmail.android.mailmessage.domain.model.SendingError
 import ch.protonmail.android.mailnotifications.domain.model.telemetry.NotificationPermissionTelemetryEventType
 import ch.protonmail.android.mailnotifications.presentation.EnablePushNotificationsDialog
 import ch.protonmail.android.mailnotifications.presentation.model.NotificationPermissionDialogState
 import ch.protonmail.android.mailsidebar.presentation.Sidebar
-import ch.protonmail.android.mailupselling.presentation.ui.drivespotlight.DriveSpotlightScreen
-import ch.protonmail.android.mailupselling.presentation.ui.npsfeedback.NPSFeedbackScreen
-import ch.protonmail.android.mailupselling.presentation.ui.screen.UpsellingScreen
 import ch.protonmail.android.navigation.listener.withDestinationChangedObservableEffect
 import ch.protonmail.android.navigation.model.Destination.Dialog
 import ch.protonmail.android.navigation.model.Destination.Screen
-import ch.protonmail.android.navigation.route.addAccountSettings
-import ch.protonmail.android.navigation.route.addAlternativeRoutingSetting
-import ch.protonmail.android.navigation.route.addAutoDeleteSettings
-import ch.protonmail.android.navigation.route.addAutoLockPinScreen
-import ch.protonmail.android.navigation.route.addAutoLockSettings
-import ch.protonmail.android.navigation.route.addCombinedContactsSetting
-import ch.protonmail.android.navigation.route.addComposer
 import ch.protonmail.android.navigation.route.addContactDetails
 import ch.protonmail.android.navigation.route.addContactForm
 import ch.protonmail.android.navigation.route.addContactGroupDetails
 import ch.protonmail.android.navigation.route.addContactGroupForm
 import ch.protonmail.android.navigation.route.addContactSearch
 import ch.protonmail.android.navigation.route.addContacts
-import ch.protonmail.android.navigation.route.addConversationDetail
-import ch.protonmail.android.navigation.route.addConversationModeSettings
-import ch.protonmail.android.navigation.route.addCustomizeToolbar
-import ch.protonmail.android.navigation.route.addDeepLinkHandler
-import ch.protonmail.android.navigation.route.addDefaultEmailSettings
-import ch.protonmail.android.navigation.route.addDisplayNameSettings
-import ch.protonmail.android.navigation.route.addDriveSpotlightRoute
-import ch.protonmail.android.navigation.route.addEditSwipeActionsSettings
-import ch.protonmail.android.navigation.route.addEntireMessageBody
-import ch.protonmail.android.navigation.route.addExportLogsSettings
-import ch.protonmail.android.navigation.route.addFolderForm
-import ch.protonmail.android.navigation.route.addFolderList
-import ch.protonmail.android.navigation.route.addLabelForm
-import ch.protonmail.android.navigation.route.addLabelList
-import ch.protonmail.android.navigation.route.addLanguageSettings
-import ch.protonmail.android.navigation.route.addMailbox
-import ch.protonmail.android.navigation.route.addManageMembers
-import ch.protonmail.android.navigation.route.addMessageDetail
-import ch.protonmail.android.navigation.route.addNPSFeedbackRoute
-import ch.protonmail.android.navigation.route.addNotificationsSettings
-import ch.protonmail.android.navigation.route.addParentFolderList
-import ch.protonmail.android.navigation.route.addPrivacySettings
-import ch.protonmail.android.navigation.route.addRemoveAccountDialog
-import ch.protonmail.android.navigation.route.addSetMessagePassword
-import ch.protonmail.android.navigation.route.addSettings
-import ch.protonmail.android.navigation.route.addSignOutAccountDialog
-import ch.protonmail.android.navigation.route.addSwipeActionsSettings
-import ch.protonmail.android.navigation.route.addThemeSettings
-import ch.protonmail.android.navigation.route.addUpsellingRoutes
+import ch.protonmail.android.sync.enableContactsSync
+import ch.protonmail.android.sync.ensureContactSyncAccount
+import ch.protonmail.android.sync.requestImmediateSync
 import ch.protonmail.android.uicomponents.snackbar.DismissableSnackbarHost
 import ch.protonmail.android.uicomponents.snackbar.shouldGoInTwoRows
 import io.sentry.compose.withSentryObservableEffect
@@ -119,6 +80,7 @@ import me.proton.core.compose.component.ProtonSnackbarHostState
 import me.proton.core.compose.component.ProtonSnackbarType
 import me.proton.core.compose.theme.ProtonTheme
 import me.proton.core.network.domain.NetworkStatus
+import me.proton.core.user.domain.entity.User
 
 @Composable
 @Suppress("ComplexMethod")
@@ -127,6 +89,14 @@ fun Home(
     launcherActions: Launcher.Actions,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
+    //        val readyAcc = accounts.firstOrNull { it.isReady() }
+//        if(readyAcc != null){
+//            val account = ensureContactSyncAccount(context, readyAcc.userId.id)
+//            enableContactsSync(account)
+//            requestImmediateSync(account)
+//        }
+
+
     val navController = rememberNavController()
         .withSentryObservableEffect()
         .withDestinationChangedObservableEffect()
@@ -220,6 +190,28 @@ fun Home(
     val errorSendingMessageText = stringResource(id = R.string.mailbox_message_sending_error)
     val errorSendingMessageActionText = stringResource(id = R.string.mailbox_message_sending_error_action)
     val context = LocalContext.current
+
+
+    when(val u = state.user) {
+        is User -> {
+            Log.i("ContactSync", "Found user ${u.email}")
+
+            val read = context.checkSelfPermission(Manifest.permission.READ_CONTACTS)
+            val write = context.checkSelfPermission(Manifest.permission.WRITE_CONTACTS)
+
+            if(read == 0 && write == 0) {
+                Log.i("ContactSync", "Permissions allowed.")
+                val acc = ensureContactSyncAccount(context, u.email ?: u.userId.id)
+                enableContactsSync(acc)
+                requestImmediateSync(acc)
+            }
+        }
+        else -> {
+            Log.i("ContactSync", "No User yet.")
+        }
+    }
+
+
     fun showErrorSendingMessageSnackbar(error: SendingError?) = scope.launch {
         val message = when (error) {
             is SendingError.GenericLocalized -> error.apiMessage
@@ -342,7 +334,7 @@ fun Home(
                 navigationActions = buildSidebarActions(navController, launcherActions)
             )
         },
-        drawerGesturesEnabled = currentDestinationRoute == Screen.Mailbox.route,
+        drawerGesturesEnabled = currentDestinationRoute == Screen.Contacts.route,
         snackbarHost = {
             DismissableSnackbarHost(
                 modifier = Modifier.testTag(CommonTestTags.SnackbarHostSuccess),
@@ -375,199 +367,8 @@ fun Home(
             NavHost(
                 modifier = Modifier.fillMaxSize(),
                 navController = navController,
-                startDestination = Screen.Mailbox.route
+                startDestination = Screen.Contacts.route
             ) {
-                // home
-                addConversationDetail(
-                    actions = ConversationDetail.Actions(
-                        onExit = { notifyUserMessage ->
-                            navController.navigateBack()
-                            notifyUserMessage?.let { showUndoableOperationSnackbar(it) }
-                            viewModel.recordViewOfMailboxScreen()
-                        },
-                        openMessageBodyLink = activityActions.openInActivityInNewTask,
-                        openAttachment = activityActions.openIntentChooser,
-                        handleProtonCalendarRequest = activityActions.openProtonCalendarIntentValues,
-                        onAddLabel = { navController.navigate(Screen.LabelList.route) },
-                        onAddFolder = { navController.navigate(Screen.FolderList.route) },
-                        showFeatureMissingSnackbar = { showFeatureMissingSnackbar() },
-                        onReply = { navController.navigate(Screen.MessageActionComposer(DraftAction.Reply(it))) },
-                        onReplyAll = { navController.navigate(Screen.MessageActionComposer(DraftAction.ReplyAll(it))) },
-                        onForward = { navController.navigate(Screen.MessageActionComposer(DraftAction.Forward(it))) },
-                        onViewContactDetails = { navController.navigate(Screen.ContactDetails(it)) },
-                        onAddContact = { basicContactInfo ->
-                            navController.navigate(Screen.AddContact(basicContactInfo))
-                        },
-                        onComposeNewMessage = {
-                            navController.navigate(
-                                Screen.MessageActionComposer(
-                                    DraftAction.ComposeToAddresses(
-                                        listOf(it)
-                                    )
-                                )
-                            )
-                        },
-                        navigateToCustomizeToolbar = {
-                            navController.navigate(Screen.CustomizeToolbar.route)
-                        },
-                        openComposerForDraftMessage = { navController.navigate(Screen.EditDraftComposer(it)) },
-                        showSnackbar = { message ->
-                            scope.launch {
-                                snackbarHostNormState.showSnackbar(
-                                    message = message,
-                                    type = ProtonSnackbarType.NORM
-                                )
-                            }
-                        },
-                        recordMailboxScreenView = { viewModel.recordViewOfMailboxScreen() },
-                        onViewEntireMessageClicked =
-                        { messageId, shouldShowEmbeddedImages, shouldShowRemoteContent, viewModePreference ->
-                            navController.navigate(
-                                Screen.EntireMessageBody(
-                                    messageId, shouldShowEmbeddedImages, shouldShowRemoteContent, viewModePreference
-                                )
-                            )
-                        }
-                    )
-                )
-                addMailbox(
-                    navController,
-                    drawerState = scaffoldState.drawerState,
-                    showOfflineSnackbar = { showOfflineSnackbar() },
-                    showNormalSnackbar = { showNormalSnackbar(it) },
-                    showErrorSnackbar = { showErrorSnackbar(it) },
-                    onRequestNotificationPermission = launcherActions.onRequestNotificationPermission
-                )
-                addMessageDetail(
-                    actions = MessageDetail.Actions(
-                        onExit = { notifyUserMessage ->
-                            navController.navigateBack()
-                            notifyUserMessage?.let { showUndoableOperationSnackbar(it) }
-                            viewModel.recordViewOfMailboxScreen()
-                        },
-                        openMessageBodyLink = activityActions.openInActivityInNewTask,
-                        openAttachment = activityActions.openIntentChooser,
-                        handleProtonCalendarRequest = activityActions.openProtonCalendarIntentValues,
-                        onAddLabel = { navController.navigate(Screen.LabelList.route) },
-                        onAddFolder = { navController.navigate(Screen.FolderList.route) },
-                        showFeatureMissingSnackbar = { showFeatureMissingSnackbar() },
-                        onReply = { navController.navigate(Screen.MessageActionComposer(DraftAction.Reply(it))) },
-                        onReplyAll = { navController.navigate(Screen.MessageActionComposer(DraftAction.ReplyAll(it))) },
-                        onForward = { navController.navigate(Screen.MessageActionComposer(DraftAction.Forward(it))) },
-                        onViewContactDetails = { navController.navigate(Screen.ContactDetails(it)) },
-                        onAddContact = { basicContactInfo ->
-                            navController.navigate(Screen.AddContact(basicContactInfo))
-                        },
-                        onComposeNewMessage = {
-                            navController.navigate(
-                                Screen.MessageActionComposer(
-                                    DraftAction.ComposeToAddresses(
-                                        listOf(it)
-                                    )
-                                )
-                            )
-                        },
-                        showSnackbar = { message ->
-                            scope.launch {
-                                snackbarHostNormState.showSnackbar(
-                                    message = message,
-                                    type = ProtonSnackbarType.NORM
-                                )
-                            }
-                        },
-                        navigateToCustomizeToolbar = {
-                            navController.navigate(Screen.CustomizeToolbar.route)
-                        },
-                        recordMailboxScreenView = { viewModel.recordViewOfMailboxScreen() },
-                        onViewEntireMessageClicked =
-                        { messageId, shouldShowEmbeddedImages, shouldShowRemoteContent, viewModePreference ->
-                            navController.navigate(
-                                Screen.EntireMessageBody(
-                                    messageId, shouldShowEmbeddedImages, shouldShowRemoteContent, viewModePreference
-                                )
-                            )
-                        }
-                    )
-                )
-                addEntireMessageBody(
-                    navController,
-                    onOpenMessageBodyLink = activityActions.openInActivityInNewTask
-                )
-                addComposer(
-                    navController,
-                    activityActions,
-                    showDraftSavedSnackbar = { showDraftSavedSnackbar(it) },
-                    showMessageSendingSnackbar = { showMessageSendingSnackbar() },
-                    showMessageSendingOfflineSnackbar = { showMessageSendingOfflineSnackbar() },
-                    showComposerV2 = viewModel.isComposerV2Enabled
-                )
-
-                addSetMessagePassword(navController)
-                addSignOutAccountDialog(navController)
-                addRemoveAccountDialog(navController)
-                addSettings(navController)
-                addLabelList(
-                    navController,
-                    showLabelListErrorLoadingSnackbar = { showLabelListErrorLoadingSnackbar() }
-                )
-                addLabelForm(
-                    navController,
-                    showLabelSavedSnackbar = { showLabelSavedSnackbar() },
-                    showLabelDeletedSnackbar = { showLabelDeletedSnackbar() },
-                    showUpsellingSnackbar = { showUpsellingSnackbar(it) },
-                    showUpsellingErrorSnackbar = { showUpsellingErrorSnackbar(it) }
-                )
-                addFolderList(
-                    navController,
-                    showErrorSnackbar = { message ->
-                        scope.launch {
-                            snackbarHostErrorState.showSnackbar(
-                                message = message,
-                                type = ProtonSnackbarType.ERROR
-                            )
-                        }
-                    }
-                )
-                addFolderForm(
-                    navController,
-                    showSuccessSnackbar = { message ->
-                        scope.launch {
-                            snackbarHostSuccessState.showSnackbar(
-                                message = message,
-                                type = ProtonSnackbarType.SUCCESS
-                            )
-                        }
-                    },
-                    showErrorSnackbar = { message ->
-                        scope.launch {
-                            snackbarHostErrorState.showSnackbar(
-                                message = message,
-                                type = ProtonSnackbarType.ERROR
-                            )
-                        }
-                    },
-                    showNormSnackbar = { message ->
-                        scope.launch {
-                            snackbarHostNormState.showSnackbar(
-                                message = message,
-                                type = ProtonSnackbarType.NORM
-                            )
-                        }
-                    }
-                )
-                addParentFolderList(
-                    navController,
-                    showErrorSnackbar = { message ->
-                        scope.launch {
-                            snackbarHostErrorState.showSnackbar(
-                                message = message,
-                                type = ProtonSnackbarType.ERROR
-                            )
-                        }
-                    }
-                )
-                // settings
-                addAccountSettings(navController, launcherActions, activityActions)
                 addContacts(
                     navController,
                     showErrorSnackbar = { message ->
@@ -672,68 +473,9 @@ fun Home(
                         }
                     }
                 )
-                addManageMembers(
-                    navController,
-                    showErrorSnackbar = { message ->
-                        scope.launch {
-                            snackbarHostErrorState.showSnackbar(
-                                message = message,
-                                type = ProtonSnackbarType.ERROR
-                            )
-                        }
-                    }
-                )
                 addContactSearch(
                     navController
                 )
-                addAlternativeRoutingSetting(navController)
-                addCombinedContactsSetting(navController)
-                addConversationModeSettings(navController)
-                addAutoDeleteSettings(navController)
-                addDefaultEmailSettings(navController)
-                addDisplayNameSettings(navController)
-                addEditSwipeActionsSettings(navController)
-                addLanguageSettings(navController)
-                addCustomizeToolbar(navController)
-                addPrivacySettings(navController)
-                addAutoLockSettings(navController)
-                addAutoLockPinScreen(
-                    onBack = { navController.navigateBack() },
-                    onShowSuccessSnackbar = {
-                        scope.launch {
-                            snackbarHostSuccessState.showSnackbar(message = it, type = ProtonSnackbarType.SUCCESS)
-                        }
-                    },
-                    activityActions = LockScreenActivity.Actions.Empty
-                )
-                addSwipeActionsSettings(navController)
-                addThemeSettings(navController)
-                addNotificationsSettings(navController)
-                addExportLogsSettings(navController)
-                addDeepLinkHandler(navController)
-                addUpsellingRoutes(
-                    UpsellingScreen.Actions.Empty.copy(
-                        onDismiss = { navController.navigateBack() },
-                        onUpgrade = { message -> scope.launch { showNormalSnackbar(message) } },
-                        onError = { message -> scope.launch { showErrorSnackbar(message) } }
-                    )
-                )
-                addDriveSpotlightRoute(
-                    DriveSpotlightScreen.Actions(
-                        onError = { message -> scope.launch { showErrorSnackbar(message) } },
-                        onDismiss = { navController.navigateBack() }
-                    )
-                )
-                addNPSFeedbackRoute(
-                    NPSFeedbackScreen.Actions(
-                        onSubmitted = { message ->
-                            scope.launch { showNormalSnackbar(message) }
-                            navController.navigateBack()
-                        },
-                        onDismiss = { navController.navigateBack() }
-                    )
-                )
-
                 isNavHostReady = true
             }
         }
